@@ -1,0 +1,24 @@
+--- a/libavformat/iff.c
++++ b/libavformat/iff.c
+@@ -456,8 +456,20 @@
+         data_size = iff->is_64bit ? avio_rb64(pb) : avio_rb32(pb);
+         orig_pos = avio_tell(pb);
+ 
+-        if (data_size >= INT64_MAX)
++        if (data_size >= INT64_MAX) {
++            /* Local patch: some DSDIFF rippers (observed from "SACD Ripper
++             * release 0.10") append a trailing chunk whose 64-bit size field is
++             * garbage, *after* an otherwise valid audio body. Upstream aborts
++             * the entire header parse, so the file becomes unreadable even
++             * though its audio chunk was already located and is intact. If a
++             * body chunk has already been found, stop scanning for further
++             * metadata and keep the stream rather than discarding the file.
++             * Falls through to the original error when no body was seen yet, so
++             * genuinely corrupt files are still rejected. */
++            if (iff->body_size)
++                break;
+             return AVERROR_INVALIDDATA;
++        }
+ 
+         switch(chunk_id) {
+         case ID_VHDR:
