@@ -55,9 +55,21 @@ identifiers, or the contents of your files.</p>
       summary of the audio; the audio itself is never sent.</li>
   <li><strong>Discogs</strong> (api.discogs.com) — barcode lookups, used only when
       MusicBrainz has no barcode for a release.</li>
-  <li><strong>Apple iTunes Search</strong> (itunes.apple.com) and <strong>DuckDuckGo</strong>
-      (api.duckduckgo.com) — supplementary metadata lookups.</li>
 </ul>
+
+<p>When you ask the built-in Search assistant about an album, Vibenator also looks up
+background about that album and the people credited on it. Those queries contain the album
+title and artist names, and go to:</p>
+<ul>
+  <li><strong>Wikipedia</strong> (wikipedia.org) — articles about the album, the work, and
+      the performers, conductors and composers credited.</li>
+  <li><strong>DuckDuckGo</strong> (api.duckduckgo.com) — an instant-answer summary, used
+      when Wikipedia has nothing or as a second source.</li>
+  <li><strong>Apple iTunes Search</strong> (itunes.apple.com) — release facts such as date,
+      genre and label, from Apple's public catalogue search.</li>
+</ul>
+<p>These three are used only by the Search assistant. If you never use it, they are never
+contacted.</p>
 <p>Each of these services receives your device's IP address as an ordinary part of making
 an internet request, and each has its own privacy policy governing what it does with the
 requests it receives. Vibenator sends no identifier that would let them connect those
