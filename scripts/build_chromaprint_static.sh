@@ -7,12 +7,12 @@
 #
 # Shared rather than static for the same licensing reason as FFmpeg: Chromaprint
 # is LGPL 2.1, and only a replaceable library file satisfies §6b without our
-# having to publish Vibenator's own object files. See build_ffmpeg_static.sh's
+# having to publish Gershwin's own object files. See build_ffmpeg_static.sh's
 # header for the full reasoning.
 #
 # Output:
-#   Vibenator/ChromaprintLibs/lib/libchromaprint.dylib
-#   Vibenator/ChromaprintLibs/include/chromaprint.h
+#   Gershwin/ChromaprintLibs/lib/libchromaprint.dylib
+#   Gershwin/ChromaprintLibs/include/chromaprint.h
 #
 # Prerequisites: cmake (brew install cmake if missing)
 #
@@ -26,8 +26,8 @@ CHROMAPRINT_URL="https://github.com/acoustid/chromaprint/releases/download/v${CH
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 ROOT_DIR="$(dirname "$SCRIPT_DIR")"
-LIBS_DIR="${ROOT_DIR}/Vibenator/ChromaprintLibs"
-BUILD_BASE="${TMPDIR%/}/chromaprint_vibenator"
+LIBS_DIR="${ROOT_DIR}/Gershwin/ChromaprintLibs"
+BUILD_BASE="${TMPDIR%/}/chromaprint_gershwin"
 
 if ! command -v cmake &>/dev/null; then
     echo "ERROR: cmake not found. Install with: brew install cmake"

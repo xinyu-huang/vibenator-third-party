@@ -15,7 +15,7 @@
 +    /* Local patch: with `raw_dsd` set, the decoder stops after DST->DSD
 +     * decompression and returns the raw 1-bit DSD bitstream
 +     * (AV_SAMPLE_FMT_U8, MSB first, channel-interleaved) instead of running
-+     * ff_dsd2pcm_translate over it. Vibenator needs the untouched DSD bits to
++     * ff_dsd2pcm_translate over it. Gershwin needs the untouched DSD bits to
 +     * build DoP frames for bit-perfect playback; the float PCM the stock
 +     * decoder returns has already been low-pass filtered and cannot be used
 +     * for that. DST->DSD is itself lossless, so the raw output is bit-exact. */

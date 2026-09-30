@@ -7,7 +7,7 @@
 # Shared rather than static for a licensing reason, not a technical one. FFmpeg is
 # LGPL 2.1, which requires that a user be able to substitute their own build of the
 # library. Statically linked, that is impossible without relinking the whole app,
-# which would oblige us to hand out Vibenator's own object files (LGPL 2.1 §6a).
+# which would oblige us to hand out Gershwin's own object files (LGPL 2.1 §6a).
 # As dylibs in Contents/Frameworks, the library is a replaceable file and §6b is
 # satisfied without publishing any of our code. Do not switch this back to
 # --enable-static without reading that section first.
@@ -23,8 +23,8 @@
 #   Frameworks: AudioToolbox, CoreFoundation, CoreMedia, CoreVideo, CoreServices
 #
 # Output:
-#   Vibenator/FFmpegLibs/lib/   libavformat.a libavcodec.a libavutil.a libswresample.a
-#   Vibenator/FFmpegLibs/include/  (FFmpeg public headers)
+#   Gershwin/FFmpegLibs/lib/   libavformat.a libavcodec.a libavutil.a libswresample.a
+#   Gershwin/FFmpegLibs/include/  (FFmpeg public headers)
 #
 # Usage (run from repo root):
 #   bash scripts/build_ffmpeg_static.sh
@@ -41,8 +41,8 @@ DEPLOYMENT_TARGET="15.0"
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 ROOT_DIR="$(dirname "$SCRIPT_DIR")"
-LIBS_DIR="${ROOT_DIR}/Vibenator/FFmpegLibs"
-BUILD_BASE="${TMPDIR%/}/ffmpeg_vibenator"
+LIBS_DIR="${ROOT_DIR}/Gershwin/FFmpegLibs"
+BUILD_BASE="${TMPDIR%/}/ffmpeg_gershwin"
 
 # Build only for the host architecture to avoid nasm/yasm requirements on x86_64
 HOST_ARCH="$(uname -m)"

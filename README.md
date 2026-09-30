@@ -1,12 +1,12 @@
-# Vibenator — third-party library sources
+# Gershwin — third-party library sources
 
-Vibenator is a macOS music library application. It uses three third-party
+Gershwin is a macOS music library application. It uses three third-party
 libraries released under free-software licences. This repository exists so that
-anyone who has a copy of Vibenator can obtain, inspect, modify and rebuild those
+anyone who has a copy of Gershwin can obtain, inspect, modify and rebuild those
 libraries — it holds the modifications made to them and the exact scripts used to
 build the binaries that ship inside the app.
 
-Nothing here is part of Vibenator itself. This repository is published to meet the
+Nothing here is part of Gershwin itself. This repository is published to meet the
 obligations of the libraries' licences, and everything in it relates to FFmpeg,
 Chromaprint and TagLib rather than to the application.
 
@@ -23,7 +23,7 @@ the result is LGPL, not GPL. See `scripts/build_ffmpeg_static.sh` for the comple
 configure invocation — every enabled demuxer, decoder and parser is listed there.
 
 FFmpeg and Chromaprint are linked dynamically and ship as separate `.dylib` files
-inside `Vibenator.app/Contents/Frameworks/`, so either may be replaced with your
+inside `Gershwin.app/Contents/Frameworks/`, so either may be replaced with your
 own build (see below). TagLib is linked statically under the MPL 1.1 half of its
 dual licence; it is unmodified, so its source is the upstream release.
 
@@ -62,9 +62,9 @@ machine.
 The scripts are named `..._static.sh` for historical reasons; both now produce
 shared libraries.
 
-### Replacing a library in an installed copy of Vibenator
+### Replacing a library in an installed copy of Gershwin
 
-The libraries live in `Vibenator.app/Contents/Frameworks/`, named
+The libraries live in `Gershwin.app/Contents/Frameworks/`, named
 `libavcodec.dylib`, `libavformat.dylib`, `libavutil.dylib`, `libswresample.dylib`
 and `libchromaprint.dylib`. Each has an `@rpath` install name and the application
 carries an `@executable_path/../Frameworks` runpath, so a replacement of the same
@@ -72,7 +72,7 @@ name is picked up in place.
 
 Because macOS applications are code-signed, replacing a file inside the bundle
 invalidates the signature; you will need to re-sign the bundle locally
-(`codesign --force --deep --sign - Vibenator.app`) for the modified library to
+(`codesign --force --deep --sign - Gershwin.app`) for the modified library to
 load. This is a platform constraint rather than a restriction imposed by the
 application.
 
